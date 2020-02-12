@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# if we don't have a file, start at zero
+if [ ! -f "/tmp/backlit_mode.dat" ] ; then
+    backlit_mode="OFF"
+
+# otherwise read the value from the file
+else
+    backlit_mode=`cat /tmp/backlit_mode.dat`
+fi
+
+if [ $backlit_mode = "OFF" ]; then
+    xset led 3
+    echo "ON" > /tmp/backlit_mode.dat
+elif [ $backlit_mode = "ON" ]; then
+    xset -led 3
+    echo "OFF" > /tmp/backlit_mode.dat
+fi

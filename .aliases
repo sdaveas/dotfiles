@@ -1,0 +1,155 @@
+#'set syntax=sh' to highlight
+
+# Cd to crowd directory.
+alias crowd_v2='cd ~/Projects/crowd_v2'
+# Cd to postgraduate directory.
+alias postgrad='cd ~/Projects/postgraduate'
+# Cd to drpg directory.
+alias drpg='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg'
+# Start Server
+alias m123_node='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg/target/classes && java -cp .:java-json.jar Network.Node'
+# Start Client
+alias m123_client='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg/target/classes && java -cp .:java-json.jar Network.Client'
+# Start bare server
+alias m123_server_bare='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg_bare/target/classes && java -cp .:java-json.jar Network.TCP.MultiServer'
+# Start base client
+alias m123_client_bare='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg_bare/target/classes && java -cp .:java-json.jar Network.TCP.Client'
+# Start bare node
+alias m123_node_bare='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg_bare/target/classes && java -cp .:java-json.jar Network.TCP.TCPNode'
+# Prints a goddamn beautiful git tree.
+alias git-logs='git log --graph --oneline --decorate --all'
+# Stores the input to the clipboard
+alias ctrl-c='xclip -selection c'
+# Loads the clipboard memory.
+alias ctrl-v='xclip -selection clipboard -o'
+# Terminal based file browser.
+alias rengar='ranger'
+# Terminal based weather center.
+alias weather='curl wttr.in/athens'
+# Live weather.
+live_weather_in_lines_function(){while 1; do curl 'wttr.in/athens' | tail -n 100 | head -n "$1" && sleep 600; done;}
+alias live_weather_in_lines=live_weather_in_lines_function
+# Opens pdf documents.
+alias pdf_viewer='evince'
+# Fancy lock (i3)
+fortune-lock(){ a="$(fortune)"; "~/.config/i3/i3lock-fancy/lock" -t "$a";}
+# Fzf from the current directory and opens with vim
+alias vf='/bin/vim $(fzf)'
+# Calculates the dependencies of the current packages.
+dependencies(){ pacman -Qi | sed '/^Depends On/,/^Required By/{ s/^Required By.*$//; H; d }; /^Name/!d; /^Name/{ n;x;}'| sed '/^$/s//==================================================================================/'; }
+# Prints the dependencies of the current packages.
+alias check_dependancies=dependencies
+# Log installed packages
+alias log_packages='pacman -Qqe > ~/.third-party'
+# Lock alias
+alias lock='export DISPLAY=:0; i3lock -i ~/Pictures/i3/lockscreens/not_so_large_door_2.png -p default -n'
+# Fancy lock alias
+alias flock='export DISPLAY=:0; ~/.config/i3/fortune-lock'
+# SSH to estia alias.
+alias ssh_at_estia='ssh sdaveas@estia.iit.demokritos.gr -p 2223'
+# Remote xserver
+alias remote_xsession='sudo X -quiet -nolisten tcp -noreset :4 vt4'
+# Look ups
+lookup(){grep -B 1 $1 ~/.aliases;}
+# Display aliases along with the helper comment.
+alias look=lookup
+# Demokritos Contact list
+contacts(){grep -i -B1 -A3 $1 ~/Projects/bitbucket/isl_contacts/contacts;}
+# Demokritos Contact list dynamic
+contacts_dynamic(){wd=$(pwd); cd ~/Projects/bitbucket/isl_contacts/contact_list; fzf; cd $wd;}
+alias isl_contacts='contacts_dynamic'
+alias isl='contacts_dynamic'
+
+construct_name()
+{
+    number=1;
+    tail="";
+    filename=$(basename "$1");
+    while [ -f "$HOME/.Trash/$(date +%d-%m-%y)/$filename$tail" ] || [ -d "$HOME/.Trash/$(date +%d-%m-%y)/$filename$tail" ]
+    do
+        ((number++));
+        tail="_$number";
+    done
+    unique_file_name="$filename$tail";
+}
+
+# TODO: make interface exactly the same as original rm (e.g. -rf, -r , etc)
+move_to_trash()
+{
+
+    datename=$(date +%d-%m-%y);
+    mkdir -p "$HOME/.Trash/$datename";
+    while [ $# -gt 0 ]
+    do
+        construct_name $1;
+        mv $1 ~/.Trash/$datename/"$unique_file_name";
+        echo "$HOME/.Trash/$(date +%d-%m-%y)/$unique_file_name?$(pwd)/$filename" >> "$HOME/.Trash/.restore_paths";
+        shift
+    done
+}
+
+alias env_for_crypto='source /home/stelios/Projects/postgraduate/m108_crypto/python_virtual_environment/env/bin/activate'
+alias crypto='cd ~/Projects/postgraduate/m108_crypto'
+
+clear_bin()
+{
+    rm -rf $HOME/.Trash/*;
+    echo "# These are the directories from where the files came from." > $HOME/.Trash/.restore_paths;
+}
+
+# TODO: apply regilar expressions here (e.g. a* restores all files starting with a)
+restore_file()
+{
+    deleted_file="$(cat ~/.Trash/.restore_paths| cut -f1 -d'?' | grep "$1")";
+    if [ -z "$deleted_file" ]
+    then
+        echo "No such file in bin";
+        echo "Listing of deleted files: "
+        cat ~/.Trash/.restore_paths | tail -n +2  | cut -f1 -d'?'
+        return -1;
+    fi
+    origin_dir="$(cat ~/.Trash/.restore_paths| cut -f2 -d'?' | grep "$1")";
+    echo "$deleted_file -> $origin_dir";
+    grep -v "$deleted_file?$origin_dir" $HOME/.Trash/.restore_paths > $HOME/.Trash/.restore_paths_tmp;
+    mv $HOME/.Trash/.restore_paths_tmp $HOME/.Trash/.restore_paths;
+    mv $deleted_file $origin_dir
+}
+
+alias srm=move_to_trash
+
+alias skase='sudo rmmod pcspkr'
+
+# Assert utility exists before utializing it.
+#
+execute_util()
+{
+    if [ -f $(which $1) ]; then
+        $2;
+    else
+        echo "$1 file not found";
+    fi
+}
+
+thefuck_callback()
+{
+    eval $(thefuck --alias)
+}
+
+blur_lock()
+{
+    scrot /tmp/screenshot.png
+    convert /tmp/screenshot.png -blur 0x5 /tmp/screenshot.png
+    i3lock  -i /tmp/screenshot.png
+    rm /tmp/screenshot.png
+}
+
+alias delis='cd /home/stelios/Projects/postgraduate/m149/project_2'
+alias thesis='cd /home/stelios/Projects/postgraduate/thesis'
+alias popow='cd /home/stelios/Projects/postgraduate/thesis/nipopows/src/popow/experiment'
+
+solidity_bin_path="/home/stelios/Projects/postgraduate/thesis/nipopows/bin/"
+PATH=$PATH:$solidity_bin_path
+solc_to()
+{
+    pushd && cd $solidity_bin_path && rm solc && ln -s solc_$1 solc; popd; popd;
+}

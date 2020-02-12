@@ -143,7 +143,6 @@ blur_lock()
     rm /tmp/screenshot.png
 }
 
-alias delis='cd /home/stelios/Projects/postgraduate/m149/project_2'
 alias thesis='cd /home/stelios/Projects/postgraduate/thesis'
 alias popow='cd /home/stelios/Projects/postgraduate/thesis/nipopows/src/popow/experiment'
 

@@ -14,7 +14,6 @@ home = '/home/stelios/'
 for versioned_file in files:
     if versioned_file.startswith('./.git'):
         continue
-    print(versioned_file)
     home_file = home + versioned_file
     command = ['rsync', home_file, versioned_file]
     subprocess.Popen(command,

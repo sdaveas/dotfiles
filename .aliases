@@ -1,21 +1,13 @@
 #'set syntax=sh' to highlight
 
+# Ripgrep alias
+alias rgrep='rg'
 # Cd to crowd directory.
 alias crowd_v2='cd ~/Projects/crowd_v2'
-# Cd to postgraduate directory.
+# Cd to postgrad directory.
 alias postgrad='cd ~/Projects/postgraduate'
-# Cd to drpg directory.
-alias drpg='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg'
-# Start Server
-alias m123_node='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg/target/classes && java -cp .:java-json.jar Network.Node'
-# Start Client
-alias m123_client='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg/target/classes && java -cp .:java-json.jar Network.Client'
-# Start bare server
-alias m123_server_bare='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg_bare/target/classes && java -cp .:java-json.jar Network.TCP.MultiServer'
-# Start base client
-alias m123_client_bare='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg_bare/target/classes && java -cp .:java-json.jar Network.TCP.Client'
-# Start bare node
-alias m123_node_bare='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg_bare/target/classes && java -cp .:java-json.jar Network.TCP.TCPNode'
+# Cd to drpg
+alias drpg='cd ~/Projects/postgraduate/k123_advanced_distributed_systems/drpg/'
 # Prints a goddamn beautiful git tree.
 alias git-logs='git log --graph --oneline --decorate --all'
 # Stores the input to the clipboard
@@ -29,11 +21,12 @@ alias weather='curl wttr.in/athens'
 # Live weather.
 live_weather_in_lines_function(){while 1; do curl 'wttr.in/athens' | tail -n 100 | head -n "$1" && sleep 600; done;}
 alias live_weather_in_lines=live_weather_in_lines_function
+alias live_weather='live_weather_in_lines "27"'
 # Opens pdf documents.
 alias pdf_viewer='evince'
 # Fancy lock (i3)
 fortune-lock(){ a="$(fortune)"; "~/.config/i3/i3lock-fancy/lock" -t "$a";}
-# Fzf from the current directory and opens with vim
+# Fzf from the current directory and opens with nvim
 alias vf='/bin/vim $(fzf)'
 # Calculates the dependencies of the current packages.
 dependencies(){ pacman -Qi | sed '/^Depends On/,/^Required By/{ s/^Required By.*$//; H; d }; /^Name/!d; /^Name/{ n;x;}'| sed '/^$/s//==================================================================================/'; }
@@ -42,11 +35,11 @@ alias check_dependancies=dependencies
 # Log installed packages
 alias log_packages='pacman -Qqe > ~/.third-party'
 # Lock alias
-alias lock='export DISPLAY=:0; i3lock -i ~/Pictures/i3/lockscreens/not_so_large_door_2.png -p default -n'
+alias lock='export DISPLAY=:0; i3lock -i ~/Pictures/i3/lockscreens/not_so_large_door_2.png -p default -n &; disown;'
 # Fancy lock alias
 alias flock='export DISPLAY=:0; ~/.config/i3/fortune-lock'
 # SSH to estia alias.
-alias ssh_at_estia='ssh sdaveas@estia.iit.demokritos.gr -p 2223'
+alias ssh_at_estia='ssh sdaveas@estia.iit.demokritos.gr -p 222'
 # Remote xserver
 alias remote_xsession='sudo X -quiet -nolisten tcp -noreset :4 vt4'
 # Look ups
@@ -54,9 +47,9 @@ lookup(){grep -B 1 $1 ~/.aliases;}
 # Display aliases along with the helper comment.
 alias look=lookup
 # Demokritos Contact list
-contacts(){grep -i -B1 -A3 $1 ~/Projects/bitbucket/isl_contacts/contacts;}
+contacts(){grep -i -B1 -A3 $1 ~/Documents/isl_contacts/contacts;}
 # Demokritos Contact list dynamic
-contacts_dynamic(){wd=$(pwd); cd ~/Projects/bitbucket/isl_contacts/contact_list; fzf; cd $wd;}
+contacts_dynamic(){wd=$(pwd); cd ~/Documents/isl_contacts/contact_list; fzf; cd $wd;}
 alias isl_contacts='contacts_dynamic'
 alias isl='contacts_dynamic'
 
@@ -87,9 +80,6 @@ move_to_trash()
         shift
     done
 }
-
-alias env_for_crypto='source /home/stelios/Projects/postgraduate/m108_crypto/python_virtual_environment/env/bin/activate'
-alias crypto='cd ~/Projects/postgraduate/m108_crypto'
 
 clear_bin()
 {
@@ -135,20 +125,14 @@ thefuck_callback()
     eval $(thefuck --alias)
 }
 
-blur_lock()
-{
-    scrot /tmp/screenshot.png
-    convert /tmp/screenshot.png -blur 0x5 /tmp/screenshot.png
-    i3lock  -i /tmp/screenshot.png
-    rm /tmp/screenshot.png
-}
+# Simulator
+alias start_crowd_server='~/Projects/crowd_v2/build/Release/crowd ~/Projects/crowd_v2/data/flysec_no_inspector.lua'
+alias close_crowd_server='pkill -9 crowd'
+alias delis="cd /home/stelios/Projects/postgraduate/m149/project_2"
+alias takis="cd /home/stelios/Projects/postgraduate/pgai"
+alias crypto="cd /home/stelios/Projects/postgraduate/m108_crypto/"
+alias cpp_tests='/home/stelios/Projects/cpp_tests'
+alias thesis='/home/stelios/Projects/postgraduate/thesis'
+alias popow='/home/stelios/Projects/postgraduate/thesis/popow/experiment'
 
-alias thesis='cd /home/stelios/Projects/postgraduate/thesis'
-alias popow='cd /home/stelios/Projects/postgraduate/thesis/nipopows/src/popow/experiment'
-
-solidity_bin_path="/home/stelios/Projects/postgraduate/thesis/nipopows/bin/"
-PATH=$PATH:$solidity_bin_path
-solc_to()
-{
-    pushd && cd $solidity_bin_path && rm solc && ln -s solc_$1 solc; popd; popd;
-}
+HISTTIMEFORMAT="%d/%m/%y %T "

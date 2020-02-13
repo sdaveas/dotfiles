@@ -1,14 +1,3 @@
-pushd .
-cd ~/etc/dotfiles
-python ./update.py
-if git diff-index --quiet HEAD --; then
-
-else
-    echo "Dot files have changed. Update ~/.etc/dotfiles"
-fi
-popd
-
-#
 #If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -18,8 +7,7 @@ export ZSH=/usr/share/oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="gentoo"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -102,32 +90,34 @@ export PATH=$PATH:~/.vimpkg/bin
 #
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 #source "${GITAWAREPROMPT}/main.sh"
+export DEFAULT_USER="$(whoami)"
 
 HISTSIZE=1000000
 HISTFILESIZE=2000000
 
-bindkey -v
+# bindkey -v
+
+if [ -f /etc/bash.command-not-found ]; then
+    . /etc/bash.command-not-found
+fi
 
 export VISUAL="vim"
-# export CLASSPATH="/home/stelios/aspectj1.8/lib/aspectjrt.jar"
-# export PATH=${PATH}:/home/stelios/aspectj1.8/bin
 
-source /usr/share/git-flow/git-flow-completion.zsh
-
+if [ "$HOSTNAME" = stelios ]; then
+    source ~/utils/git-flow-completion/git-flow-completion.zsh
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f /etc/profile.d/fzf.zsh ] && source /etc/profile.d/fzf.zsh
-
-eval $(thefuck --alias)
 
 source ~/.aliases
 
-prompt_context() {
-    if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-        prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-    fi
-}
+# Solidity compilers
+solc_bins="/home/stelios/Projects/postgraduate/thesis/nipopows/bin"
+PATH=$PATH:$solc_bins
+solc_to_4_18(){pushd $(pwd) && cd $solc_bins && (rm solc || 1) && ln -s solc_0_4_18 solc && popd;}
+solc_to_5_4(){pushd $(pwd) && cd $solc_bins && (rm solc || 1) && ln -s solc_0_5_4 solc && popd;}
+solc_to_5_5(){pushd $(pwd) && cd $solc_bins && (rm solc || 1) && ln -s solc_0_5_5 solc && popd;}
+solc_to_5_13(){pushd $(pwd) && cd $solc_bins && (rm solc || 1) && ln -s solc_0_5_13 solc && popd;}
+solc_to_6_2(){pushd $(pwd) && cd $solc_bins && (rm solc || 1) && ln -s solc_0_6_2 solc && popd;}
 
-if [ -f $HOME/third_party/bash-insulter/src/bash.command-not-found ]; then
-    source $HOME/third_party/bash-insulter/src/bash.command-not-found
-fi
+

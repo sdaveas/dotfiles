@@ -1,3 +1,14 @@
+pushd .
+cd ~/etc/dotfiles
+python ./update.py
+if git diff-index --quiet HEAD --; then
+
+else
+    echo "Dot files have changed. Update ~/.etc/dotfiles"
+fi
+popd
+
+#
 #If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 

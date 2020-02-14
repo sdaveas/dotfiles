@@ -122,4 +122,3 @@ solc_to_5_5(){pushd $(pwd) && cd $solc_bins && (rm solc || 1) && ln -s solc_0_5_
 solc_to_5_13(){pushd $(pwd) && cd $solc_bins && (rm solc || 1) && ln -s solc_0_5_13 solc && popd;}
 solc_to_6_2(){pushd $(pwd) && cd $solc_bins && (rm solc || 1) && ln -s solc_0_6_2 solc && popd;}
 
-

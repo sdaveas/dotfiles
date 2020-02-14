@@ -95,7 +95,7 @@ export DEFAULT_USER="$(whoami)"
 HISTSIZE=1000000
 HISTFILESIZE=2000000
 
-# bindkey -v
+bindkey -v
 
 if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found

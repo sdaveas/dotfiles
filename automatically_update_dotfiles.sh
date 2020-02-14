@@ -16,7 +16,7 @@ else
                 git add * && git commit -m "Automatically commited changes";
                 echo "... OK";
                 break;;
-            [Nn]* ) echo "No"; break;;
+            [Nn]* ) break;;
         esac
         read -p "Update? (Y/n) " answer
     done

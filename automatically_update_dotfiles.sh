@@ -1,5 +1,7 @@
 #!/bin/bash
 
+python update.py
+
 pushd . > /dev/null
 cd /home/stelios/etc/dotfiles
 if git diff-index --quiet HEAD --; then
@@ -25,5 +27,4 @@ else
         read -p "Update? (Y/n) " answer
     done
 fi
-python update.py
 popd > /dev/null

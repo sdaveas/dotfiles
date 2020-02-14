@@ -13,7 +13,7 @@ else
             [Yy]* )
                 git diff HEAD~1
                 echo "Commiting changes ...";
-                git add * && git commit -m "Automatically commited changes";
+                git add $(git diff --name-only) && git commit -m "Automatically commited changes";
                 echo "... OK";
                 break;;
             [Nn]* ) break;;

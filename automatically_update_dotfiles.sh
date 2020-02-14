@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 pushd . > /dev/null
 cd /home/stelios/etc/dotfiles
 if git diff-index --quiet HEAD --; then
@@ -13,7 +15,11 @@ else
             [Yy]* )
                 git diff HEAD~1
                 echo "Commiting changes ...";
-                git add $(git diff --name-only) && git commit -m "Automatically commited changes";
+                git add $(git diff --name-only)
+                read -p "Commit message: (default is Automatically commited changes)" message
+                message=${message:-"Automatically commited changes"}
+                echo $message
+                git commit -m "$message";
                 echo "... OK";
                 break;;
             [Nn]* ) break;;

@@ -39,6 +39,7 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/calendar.vim'
 Plug 'tomlion/vim-solidity'
+Plug 'sjl/gundo.vim'
 call plug#end()
 
 " unicode symbols

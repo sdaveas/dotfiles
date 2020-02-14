@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 pushd . > /dev/null
 cd /home/stelios/etc/dotfiles
 if git diff-index --quiet HEAD --; then

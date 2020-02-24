@@ -4,12 +4,14 @@ python update.py
 
 pushd . > /dev/null
 cd /home/stelios/etc/dotfiles
-if git diff-index --quiet HEAD --; then
-    echo "No changes" > /dev/null
+dir="/home/stelios/etc/dotfiles/"
+
+if git --git-dir $dir diff-index --quiet HEAD --; then
+    echo "No changes" > /dev/null;
 else
-    echo "Some dotfiles are changed"
-    read -p "Update? (Y/n) " answer
-    answer=${answer:-y}
+    echo "Some dotfiles are changed in $(pwd)";
+    read -p "Update? (Y/n) " answer;
+    answer=${answer:-y};
     while true; do
         case $answer in
             [Yy]* )

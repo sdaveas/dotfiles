@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/stelios/Projects/postgraduate/thesis/popow/experiment/src'
+let g:netrw_dirhist_6='/home/stelios/Projects/postgraduate/thesis/popow/experiment/src/__pycache__'
+let g:netrw_dirhist_5='/home/stelios/Projects/postgraduate/thesis/popow/experiment/src'
 let g:netrw_dirhist_4='/usr/share/oh-my-zsh/themes'
 let g:netrw_dirhist_3='/usr/share/oh-my-zsh'
 let g:netrw_dirhist_2='/home/stelios/.config/i3'
@@ -7,6 +10,3 @@ let g:netrw_dirhist_1='/home/stelios/.config'
 let g:netrw_dirhist_0='/home/stelios/Pictures/i3/backgrounds/daim'
 let g:netrw_dirhist_9='/home/stelios/Pictures/i3/backgrounds'
 let g:netrw_dirhist_8='/home/stelios/Pictures/i3'
-let g:netrw_dirhist_7='/home/stelios/Pictures'
-let g:netrw_dirhist_6='/home/stelios/Pictures/i3'
-let g:netrw_dirhist_5='/home/stelios/Pictures'

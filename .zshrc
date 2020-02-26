@@ -1,14 +1,3 @@
-pushd .
-cd ~/etc/dotfiles
-python ./update.py
-if git diff-index --quiet HEAD --; then
-
-else
-    echo "Dot files have changed. Update ~/.etc/dotfiles"
-fi
-popd
-
-#
 #If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -18,8 +7,8 @@ export ZSH=/usr/share/oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="clean"
+#ZSH_THEME="refined"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -106,7 +95,7 @@ export GITAWAREPROMPT=~/.bash/git-aware-prompt
 HISTSIZE=1000000
 HISTFILESIZE=2000000
 
-bindkey -v
+# bindkey -v
 
 export VISUAL="vim"
 # export CLASSPATH="/home/stelios/aspectj1.8/lib/aspectjrt.jar"

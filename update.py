@@ -1,3 +1,4 @@
+#!/bin/python
 import subprocess
 
 command = "find -type f"

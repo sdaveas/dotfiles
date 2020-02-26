@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd /home/stelios/etc/dotfiles
+path="/home/stelios/etc/dotfiles"
+cd $path
 ./update.py
-./notify_for_changes.py

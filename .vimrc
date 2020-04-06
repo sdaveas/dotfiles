@@ -72,6 +72,7 @@ call plug#end()
 
 let g:prettier#exec_cmd_path = '~/.vim/bundle/vim-prettier/node_modules/.bin/prettier'
 
+source ~/.cache/calendar.vim/credentials.vim
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 

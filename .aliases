@@ -144,7 +144,7 @@ blur_lock()
 }
 
 alias thesis='cd /home/stelios/Projects/postgraduate/thesis'
-alias popow='cd /home/stelios/Projects/postgraduate/thesis/nipopows/src/popow/experiment'
+alias popow='cd /home/stelios/Projects/nipopow-verifier'
 
 solidity_bin_path="/home/stelios/Projects/postgraduate/thesis/nipopows/bin/"
 PATH=$PATH:$solidity_bin_path

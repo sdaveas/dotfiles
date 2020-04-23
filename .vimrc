@@ -33,8 +33,9 @@ nnoremap <C-k> :Files<CR>
 
 " Plugins
 call plug#begin('~/.config/nvim/plugged')
-Plug 'vim-latex/vim-latex'
+Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
 Plug 'lervag/vimtex'
+Plug 'neoclide/coc-vimtex'
 Plug 'osyo-manga/vim-over'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'

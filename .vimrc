@@ -110,8 +110,6 @@ map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 
 nnoremap <silent> <F2> :BufExplorer<CR>
-nnoremap <silent> <C-n> :bn<CR>
-nnoremap <silent> <C-b> :bp<CR>
 
 let g:tex_flavor='latex'
 let g:vimtex_view_method='mupdf'

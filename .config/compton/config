@@ -197,7 +197,7 @@ vsync = "opengl-swc";
 # Reported to have no effect, though.
 dbe = false;
 # Painting on X Composite overlay window. Recommended.
-paint-on-overlay = true;
+paint-on-overlay = false;
 
 # Limit compton to repaint at most once every 1 / refresh_rate second to boost performance.
 # This should not be used with --vsync drm/opengl/opengl-oml as they essentially does --sw-opti's job already,

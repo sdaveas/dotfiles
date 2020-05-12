@@ -231,7 +231,7 @@ bar {
 
 # Startup programs
 exec --no-startup-id volnoti
-exec --no-startup-id /usr/bin/picom --config ~/.config/compton/config
+exec --no-startup-id /usr/bin/picom
 exec --no-startup-id ~/.config/i3/arandr.sh
 exec --no-startup-id ~/.config/i3/keyboard-layout
 exec --no-startup-id ~/.config/i3/read_temperature.sh

@@ -46,7 +46,7 @@ Plug 'bling/vim-bufferline'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'itchyny/calendar.vim'
+" Plug 'itchyny/calendar.vim'
 Plug 'tomlion/vim-solidity'
 Plug 'ambv/black', {'tag':'19.10b0'}
 Plug 'prettier/vim-prettier', {

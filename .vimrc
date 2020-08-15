@@ -70,6 +70,7 @@ Plug 'prettier/vim-prettier', {
     \ 'html',
     \ 'swift',
     \ 'solidity'] }
+Plug 'rhysd/vim-clang-format'
 call plug#end()
 
 let g:prettier#exec_cmd_path = '~/.vim/bundle/vim-prettier/node_modules/.bin/prettier'

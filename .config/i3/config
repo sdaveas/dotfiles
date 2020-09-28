@@ -265,6 +265,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id /home/stelios/.config/i3/adju
 
 # Backgrounds
 exec --no-startup-id feh --bg-center ~/Pictures/i3/backgrounds/daim/daim.jpg
+# exec --no-startup-id /home/stelios/Projects/animated-background/scripts/loop_pngs.sh /home/stelios/Projects/animated-background/scripts/forest
 exec --no-startup-id /home/stelios/.config/i3/backgrounds.sh
 exec --no-startup-id /home/stelios/.config/i3/battery_alarm.sh
 bindsym $mod_alt+n exec /home/stelios/.config/i3/next_background.sh

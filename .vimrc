@@ -32,7 +32,7 @@ nnoremap <C-c> :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 nnoremap <C-k> :Files<CR>
 
 " Plugins
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.config/vim/plugged')
 " Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
 Plug 'lervag/vimtex'
 " Plug 'neoclide/coc-vimtex'

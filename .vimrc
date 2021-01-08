@@ -33,6 +33,7 @@ nnoremap <C-k> :Files<CR>
 
 " Plugins
 call plug#begin('~/.config/vim/plugged')
+Plug 'rust-lang/rust.vim'
 " Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
 Plug 'lervag/vimtex'
 " Plug 'neoclide/coc-vimtex'
@@ -119,3 +120,7 @@ let g:vimtex_view_method='mupdf'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+
+" rust
+syntax enable
+filetype plugin indent on
